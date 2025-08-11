@@ -7,32 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle del menú móvil
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');
-        
-        // Animación del botón hamburguesa
-        const spans = navToggle.querySelectorAll('span');
-        spans.forEach((span, index) => {
-            if (navMenu.classList.contains('active')) {
-                if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
-                if (index === 1) span.style.opacity = '0';
-                if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
-            }
-        });
+        navToggle.classList.toggle('active');
     });
 
     // Cerrar menú al hacer click en un enlace
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
-            
-            // Resetear animación del botón hamburguesa
-            const spans = navToggle.querySelectorAll('span');
-            spans.forEach(span => {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
-            });
+            navToggle.classList.remove('active');
         });
     });
 
@@ -40,13 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(event) {
         if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
             navMenu.classList.remove('active');
-            
-            // Resetear animación del botón hamburguesa
-            const spans = navToggle.querySelectorAll('span');
-            spans.forEach(span => {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
-            });
+            navToggle.classList.remove('active');
         }
     });
 
